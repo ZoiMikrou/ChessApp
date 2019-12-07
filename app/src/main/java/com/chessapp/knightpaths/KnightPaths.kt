@@ -4,17 +4,16 @@ class KnightPaths {
 
     private var pathsList = mutableListOf<ArrayList<Tile>>()
 
-    private fun recursiveSolution(i: Int, j: Int, steps: Int, n: Int, m: ChessBoard): Int {
+    private fun recursiveSolution(tile: Tile, steps: Int, size: Int, chess: ChessBoard, maxSteps: Int) {
 
         if (steps == 0) {
             val newPathList = arrayListOf<Tile>()
             newPathList.addAll(pathsList[pathsList.lastIndex])
             newPathList.removeAt(newPathList.lastIndex)
             pathsList.add(newPathList)
-            return 1
+            return
         }
 
-        var res = 0
         if (steps > 0) {
 
             // Movements for the knight
@@ -25,27 +24,28 @@ class KnightPaths {
             for (k in 0..7) {
 
                 // Check validity of position
-                if (dx[k] + i >= 0 && dx[k] + i <= n - 1
-                    && dy[k] + j >= 0 && dy[k] + j <= n - 1) {
+                if (dx[k] + tile.i >= 0 && dx[k] + tile.i <= size - 1
+                    && dy[k] + tile.j >= 0 && dy[k] + tile.j <= size - 1) {
 
                     // Call function with k-1 moves left
                     if (pathsList.isEmpty()) {
                         val list = arrayListOf<Tile>()
-                        list.add(Tile(i, j))
+                        list.add(Tile(tile.i, tile.j))
                         pathsList.add(list)
                     } else if (pathsList[pathsList.lastIndex].isEmpty()) {
-                        pathsList[pathsList.lastIndex].add(Tile(i, j))
+                        pathsList[pathsList.lastIndex].add(Tile(tile.i, tile.j))
                     }
 
-                    pathsList[pathsList.lastIndex].add(Tile(dx[k] + i, dy[k] + j))
-                    res += recursiveSolution(dx[k] + i, dy[k] + j, steps - 1, n, m)
+                    pathsList[pathsList.lastIndex].add(Tile(dx[k] + tile.i, dy[k] + tile.j))
+                    recursiveSolution(Tile(dx[k] + tile.i, dy[k] + tile.j),
+                        steps - 1, size, chess, maxSteps)
                 }
             }
         }
 
         //If no moves more found generate new path from existing and continue recursive solution
         if (pathsList[pathsList.lastIndex].isNotEmpty()) {
-            if (pathsList[pathsList.lastIndex].size == 4) {
+            if (pathsList[pathsList.lastIndex].size == maxSteps + 1) {
                 val newPathList = arrayListOf<Tile>()
                 pathsList.add(newPathList)
             } else {
@@ -53,11 +53,12 @@ class KnightPaths {
             }
         }
 
-        return res
+        return
     }
 
-    fun findPaths (i: Int, j: Int, steps: Int, n: Int, m:ChessBoard): List<ArrayList<Tile>> {
-        recursiveSolution(i, j, steps, n, m)
+    fun findPaths (tile: Tile, steps: Int, size: Int, chess: ChessBoard, maxSteps: Int):
+            List<ArrayList<Tile>> {
+        recursiveSolution(tile, steps, size, chess, maxSteps)
         return pathsList.filter { path -> path.isNotEmpty() }
     }
 }

@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
         button_reset.setOnClickListener {
             chessBoard = ChessBoard()
-            header_description.setText(R.string.start_position_text)
+            header_description.text = getString(R.string.start_position_text)
             mapChessBoardToView()
             button_find_paths.isEnabled = false
             knight_paths.text = ""
@@ -67,7 +67,8 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         val destTile = chessBoard.findPosition(ChessBoard.ENDING_POS)
         if (startTile != null && destTile != null) {
             CoRoutines.default {
-                val paths = chessBoard.findKnightPaths(startTile.i, startTile.j, destTile, numberOfMoves, 6, chessBoard)
+                val paths = chessBoard.findKnightPaths(startTile, destTile,
+                    numberOfMoves, 6, chessBoard, numberOfMoves)
                 CoRoutines.transferToMain {
                     presentPaths(paths)
                 }

@@ -56,9 +56,11 @@ class ChessBoard {
         }
     }
 
-    suspend fun findKnightPaths (i: Int, j: Int, destinationTile: Tile, steps: Int, n: Int, m:ChessBoard) : List<ArrayList<Tile>> {
+    suspend fun findKnightPaths (tile: Tile, destinationTile: Tile, steps: Int, size: Int,
+                                 chess: ChessBoard, maxSteps: Int)
+            : List<ArrayList<Tile>> {
         val knightPaths = KnightPaths ()
-        val listOfAllPaths = knightPaths.findPaths(i, j, steps, n, m)
+        val listOfAllPaths = knightPaths.findPaths(tile, steps, size, chess, maxSteps)
         delay(500)
         return listOfAllPaths.filter {
                 path -> path[path.lastIndex].i == destinationTile.i && path[path.lastIndex].j == destinationTile.j
