@@ -9,19 +9,39 @@
     android:background="@color/colorPrimary"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/spinner_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        app:fontFamily="casual"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:textSize="15sp"
+        android:gravity="center"
+        android:textColor="@color/colorAccent"
+        tools:text="Choose position">
+    </TextView>
+
     <Spinner
         android:id="@+id/spinner_view"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/spinner_description"
         android:gravity="center"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorPrimaryDark"/>
 
     <TextView
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
         android:id="@+id/header_description"
         android:layout_width="wrap_content"
-        android:layout_height="35dp"
+        android:layout_height="30dp"
         android:gravity="center"
         app:layout_constraintTop_toBottomOf="@+id/spinner_view"
         app:layout_constraintStart_toStartOf="parent"

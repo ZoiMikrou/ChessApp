@@ -25,11 +25,13 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         val appPreference = ChessAppPreferences(this)
         val savedListMoveIndex = appPreference.getNumberOfMoves()
 
-        header_description.setText(R.string.start_position_text)
+        header_description.text = getString(R.string.start_position_text)
+        spinner_description.text = getString(R.string.spinner_description_text)
+
         button_find_paths.isEnabled = false
 
-        val spinnerAdapter = ArrayAdapter<Int>(this, android.R.layout.simple_spinner_dropdown_item, movesList)
-        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        val spinnerAdapter = ArrayAdapter<Int>(this, R.layout.spinner_item, movesList)
+        spinnerAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
         spinner_view!!.adapter = spinnerAdapter
         spinner_view!!.setSelection(savedListMoveIndex)
         spinner_view!!.onItemSelectedListener = this

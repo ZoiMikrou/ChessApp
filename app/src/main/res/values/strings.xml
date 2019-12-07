@@ -6,5 +6,6 @@
     <string name="reset_button_text">Reset</string>
     <string name="find_paths_button_text">Find my paths</string>
     <string name="no_available_paths">There are no available paths for these positions!</string>
+    <string name="spinner_description_text">Choose Number Of Knight Moves: </string>
     <string name="path_text">Path</string>
 </resources>
