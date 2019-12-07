@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Knight Paths</string>
+    <string name="start_position_text">Choose your knight\'s starting position</string>
+    <string name="end_position_text">Choose your knight\'s destination position</string>
+    <string name="find_paths_text">Find all available Paths!</string>
+    <string name="reset_button_text">Reset</string>
+    <string name="find_paths_button_text">Find my paths</string>
+    <string name="no_available_paths">There are no available paths for these positions!</string>
+    <string name="path_text">Path</string>
+</resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#d3b497</color>
+    <color name="colorPrimaryDark">#4F2423</color>
+    <color name="colorAccent">#8e322d</color>
+
+    <color name="lightChessTile">#F5E4CB</color>
+    <color name="darkChessTile">#D2855A</color>
+
+</resources>

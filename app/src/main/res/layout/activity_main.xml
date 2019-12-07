@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context=".MainActivity">
+
+    <Spinner
+        android:id="@+id/spinner_view"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_marginTop="15dp"
+        android:id="@+id/header_description"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:textColor="@color/colorAccent"
+        app:fontFamily="casual"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        tools:text="Choose your knight's Starting position"/>
+
+    <GridLayout
+        android:alignmentMode="alignBounds"
+        android:useDefaultMargins="false"
+        android:layout_centerInParent="false"
+        android:rowCount="6"
+        android:columnCount="6"
+        android:id="@+id/layout_chess_board"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/header_description"
+        app:layout_constraintBottom_toTopOf="@+id/scroll_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+        <ScrollView
+            android:id="@+id/scroll_view"
+            app:layout_constraintTop_toBottomOf="@+id/layout_chess_board"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:fillViewport="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/knight_paths"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/layout_chess_board"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/colorAccent"
+                android:scrollbars="vertical"
+                app:fontFamily="bold"
+                android:textStyle="normal"
+                android:textAllCaps="false"
+                android:textSize="17sp" />
+
+        </ScrollView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button_find_paths"
+        android:textAllCaps="false"
+        android:text="@string/find_paths_button_text"
+        android:textColor="@color/colorPrimary"
+        android:textSize="12sp"
+        app:fontFamily="casual"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginStart="150dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_reset"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <com.google.android.material.button.MaterialButton
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:id="@+id/button_reset"
+        android:textAllCaps="false"
+        android:text="@string/reset_button_text"
+        android:textSize="12sp"
+        app:fontFamily="casual"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginEnd="5dp"
+        app:layout_constraintStart_toEndOf="@+id/button_find_paths"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
